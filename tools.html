@@ -3,7 +3,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>IW: Beast From Beyond EE Tools</title>
+    <title>IW: Beast From Beyond - Venom X/Y/Z</title>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
@@ -75,16 +75,16 @@
                 for (var i = 0; i < self.numberOfButtons(); i++) {
                     self.buttons.push(new vmBtn());
                 }
-                
+
                 return self.buttons();
             })
 
             self.solution = ko.pureComputed(function () {
-                
+
                 var btns = parseInt(self.buttons().length);
                 switch (btns) {
                     case 3:
-                        /* 
+                        /*
                             c1 = (!b!) ? B3 : c2
                             c2 = (BL = g) ? B1 : c3
                             c3 = (sum(r) > 1 ) ? BL(r) : c4
@@ -107,7 +107,7 @@
                         return '2';
                         break;
                     case 4:
-                        /* 
+                        /*
                             c1 = (sum(y) > 1) && S >= 2 ? BL(y) : c2
                             c2 = (BL(w) && sum(b) = 0) ? B1 : c3
                             c3 = (sum(b!) > 1 ) ? BL : c4
@@ -129,7 +129,7 @@
                         return '3';
                         break;
                     case 5:
-                        /* 
+                        /*
                             c1 = (W <= 3) ? B1 :  c2
                             c2 = (sum(w) = 1 && sum(b) > 1) ? B2 : c3
                             c3 = (sum(r) = 0 && W % 2 = 0 && S < 4) ? BL : c4
@@ -220,7 +220,7 @@
                     'green': 0,
                     'blue': 0,
                     'black': 0,
-                    'yellow': 0, 
+                    'yellow': 0,
                     'white': 0
                 }
 
@@ -237,7 +237,7 @@
                 return ret;
             }
         }
-        
+
         var vmBtn = function () {
             var self = this;
             self.colour = ko.observable();
@@ -273,11 +273,11 @@
 
                 icon.appendTo(elem);
 
-                self.dummy.notifySubscribers();  
+                self.dummy.notifySubscribers();
 
                 self.placing(undefined);
 
-                $('#mazeGrid').css('cursor', '');  
+                $('#mazeGrid').css('cursor', '');
             }
 
             self.solution = ko.pureComputed(function () {
@@ -407,13 +407,13 @@
                     solution: 'U3, L1, D1, L1, U2, L1, U1, R1',
                     imageLocation: { x: -956, y: -239 }
                 },
-                { 
+                {
                     start: { x: 1, y: 3 },
                     end: { x: 4, y: 3 },
                     solution: 'U2, R5, D1, L1, U1, L2, D2, R1, U1',
                     imageLocation: { x: -1195, y: -239 }
                 },
-                { 
+                {
                     start: { x: 2, y: 4 },
                     end: { x: 3, y: 2 },
                     solution: 'D1, R1, D1, R1, U1, R1, U1, R1, U1, L2, D1, L1, U1, L1, U1, R1',
@@ -428,12 +428,12 @@
             ];
 
 
-            self.dummy.notifySubscribers(); 
+            self.dummy.notifySubscribers();
         }
     </script>
 </head>
 <body>
-    <h3>Infinite Warfare - DLC4 - Tools</h3>
+    <h3>Infinite Warfare - DLC4 - Venom X/Y/Z - Tools</h3>
     <div id="tabs">
         <ul>
             <li><a href="#tabs-1">Button Step</a></li>
@@ -450,14 +450,13 @@
             <div>
                 <fieldset>
                     <label for="btnNum">Number of buttons:</label>
-                    <input data-bind="value: numberOfButtons" type="range" min="3" max="6" id="btnNum"/>
+                    <input data-bind="value: numberOfButtons" type="range" min="3" max="6" id="btnNum" />
                     <span data-bind="text: numberOfButtons"></span>
-                </fieldset>                
+                </fieldset>
                 <!-- ko foreach: $root.buttonList() -->
                 <fieldset data-bind="style: { backgroundColor: colour}">
                     <label data-bind="text: 'Button ' + ($index() + 1)"></label>
-                    <select data-bind="options: $root.availableColours(), value: colour">
-                    </select>
+                    <select data-bind="options: $root.availableColours(), value: colour"></select>
                 </fieldset>
                 <!-- /ko -->
                 <h4 data-bind="text: 'Press button #' + solution()"></h4>
@@ -480,7 +479,7 @@
                 <style>
                 </style>
                 <div>
-                    <span onclick="viewMaze.placing('start'); $('#mazeGrid').awesomeCursor('stop', { size: 40, color: '#ECF044' });" >Start <i class="fa fa-stop" aria-hidden="true" style="font-size: 40px; color: #ECF044"></i></span>
+                    <span onclick="viewMaze.placing('start'); $('#mazeGrid').awesomeCursor('stop', { size: 40, color: '#ECF044' });">Start <i class="fa fa-stop" aria-hidden="true" style="font-size: 40px; color: #ECF044"></i></span>
                     <span onclick="viewMaze.placing('end'); $('#mazeGrid').awesomeCursor('diamond', { size: 40, color: '#04E1F4' });">End <i class="fa fa-diamond" aria-hidden="true" style="font-size: 40px; color: #04E1F4"></i></span>
                 </div>
                 <table id="mazeGrid" cellpadding="0" cellspacing="0" border="1" style="display: inline-block">
@@ -552,7 +551,7 @@
                     Activate the lower computer
                     <ul>
                         <li>
-                            If your key was Archer your message will always start with 
+                            If your key was Archer your message will always start with
                             <pre>-.- --.. -. ... ... -- . ..</pre>
                             Follow along to the beeps and listen for the first 2 letters that follow it will be one of the following
                             <ul>
